@@ -10,7 +10,7 @@
                     v-model="username"/>
                 </div>
             </div>
-        </div>
+        </div> 
         <div class="row mb-3">
             <div class="col-4">
                 <label for="password">Contraseña</label>
@@ -55,7 +55,7 @@ export default {
             this.$apollo.mutate({
                 mutation: gql`
                     mutation ($username: String!, $password: String!) {
-                        login(username: $username, password: $password) {
+                        signIn(username: $username, password: $password) {
                             access
                             refresh
                         }
@@ -66,11 +66,13 @@ export default {
                     password: this.password
                 }
             }).then(response => {
+                console.log(response)
                 this.$emit('login', {
-                    access_token: response.data.login.access,
-                    refresh_token: response.data.login.refresh,
+                    access_token: response.data.signIn.access,
+                    refresh_token: response.data.signIn.refresh,
                     username: this.username
                 });
+
             }).catch(e => {
                 console.log(JSON.stringify(e, null, 2));
             });

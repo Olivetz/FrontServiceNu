@@ -14,7 +14,7 @@
                 <label for="last_name" >Apellido</label>
                 <div>
                     <InputText 
-                    id="last_name" 
+                    id="last_name"  
                     type="text" 
                     v-model="last_name"/>
                 </div>
@@ -88,24 +88,19 @@ export default {
             });
             this.$apollo.mutate({
                 mutation: gql`
-                    mutation NewUserWithAccount(
-                        $username: String!,
-                        $firstName: String!, 
-                        $lastName: String!, 
-                        $email: String!, 
-                        $password: String!, 
-                        $balance: Int!) {
-                        newUserWithAccount(
-                            username: $username, 
+                    mutation($firstName: String!, $lastName: String!, $username:
+                    String!, $email: String!, $password: String!)  {
+                        newAccount(
                             first_name: $firstName, 
                             last_name: $lastName, 
+                            username: $username, 
                             email: $email, 
-                            password: $password, 
-                            balance: $balance) {
-                                id
-                                username
+                            password: $password) {
+                            first_name
+                            last_name
+                            username
                         }
-                    }
+                        }
                 `,
                 variables: {
                     username: this.username,
@@ -113,7 +108,6 @@ export default {
                     firstName: this.first_name,
                     lastName: this.last_name,
                     email: this.email,
-                    balance: 0
                 }
             }).then(response => {
                 Swal.close();
