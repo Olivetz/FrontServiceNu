@@ -11,7 +11,7 @@
                     <img v-bind:src='"https://assets.quick.com.co/images/pictures/aseo_oficina.jpg"' class="card-img-top" height="300" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Empresa {{lista.name}}</h5>
-                      <p>Ciudad:<b> {{lista.city}}</b></p>
+                      <p>Ciudad: <b> {{lista.city}}</b></p>
                       <p class="card-text">Se ofrece servicio de {{lista.tip_user}} por el 
                           precio de ${{lista.value}} la hora
                       </p>
