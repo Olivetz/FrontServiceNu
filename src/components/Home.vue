@@ -2,6 +2,9 @@
     <Navbar :logOut="logOut"/>
     <div class="container mt-5">
         <h4>Bienvenido usuario: {{username}}</h4>
+        <div class="mb-3">
+            <Button label="Registrar Servicio" @click="showRegistration()" />
+        </div>
         <h3>En el siguiente espacio podras ver los servicios que tenemos para ti</h3>
         <br>
         <br>
@@ -26,6 +29,9 @@
     <Dialog header="Proveedor de servicios" v-model:visible="display" :style="{width: '30vw'}">
         <Provider/>
     </Dialog>
+    <Dialog header="Registar Nuevo Servicio" v-model:visible="displayre" :style="{width: '30vw'}">
+        <NewProvider/>
+    </Dialog>
    
 </template>
 
@@ -34,6 +40,8 @@ import gql from "graphql-tag";
 import Navbar from './partials/Navbar.vue'
 import Dialog from 'primevue/dialog';
 import Provider from '../components/Provider.vue'
+import NewProvider from '../components/NewProvider.vue'
+import Button from 'primevue/button';
 
 
 export default {
@@ -42,13 +50,16 @@ export default {
         return{
             list:[],
             username: '',
-            display: false
+            display: false,
+            displayre: false
         }
     },
     components: {
         Navbar,
         Dialog,
-        Provider
+        Provider,
+        Button,
+        NewProvider
     },
     methods :{
         logOut(){
@@ -58,6 +69,9 @@ export default {
             this.display = true;
             localStorage.setItem('provider',lista.id)
             console.log(localStorage.getItem('provider'))
+        },
+        showRegistration(){
+            this.displayre = true;
         }
     },
     created(){
