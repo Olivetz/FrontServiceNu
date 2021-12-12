@@ -170,6 +170,7 @@ export default{
                 }
                 }).then(response => {
                     console.log("Se borro exitosamente: " + this.provider.name);
+                    this.displayde = false;
                     console.log(response)
                 }).catch(e => {
                     console.log(JSON.stringify(e, null, 2));
