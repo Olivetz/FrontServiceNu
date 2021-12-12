@@ -2,7 +2,7 @@
     <div class="mb-3">
         <h2>Nuevo servicio</h2>
         <p>Ingrese sus datos para el nuevo servicio:</p>
-        <p>Nombre: <input v-model="newprovider.name" type="text"></p>
+        <p>Nombre: <input v-model="newprovider.name" type="text" required></p>
         <p>Ciudad: <input v-model="newprovider.city" type="text"></p>
         <p>Dirección: <input v-model="newprovider.address" type="text"></p>
         <p>Tipo de servicio: <input v-model="newprovider.tip_user" type="text"></p>
