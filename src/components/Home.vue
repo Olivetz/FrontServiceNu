@@ -16,35 +16,48 @@
                           precio de ${{lista.value}} la hora
                       </p>
                       <button class="btn btn-primary me-1"
-                      v-on:click="addItem(lista.name)"
-                      v-bind:disabled="lista.stock == 0">Solicitar</button>
+                      v-on:click="showProvider(lista)"
+                      >Solicitar</button>
                     </div>
                 </div>
             </div>
         </div>
-        
     </div>
+    <Dialog header="Proveedor de servicios" v-model:visible="display" :style="{width: '30vw'}">
+        <Provider/>
+    </Dialog>
    
 </template>
 
 <script>
 import gql from "graphql-tag";
 import Navbar from './partials/Navbar.vue'
+import Dialog from 'primevue/dialog';
+import Provider from '../components/Provider.vue'
+
 
 export default {
     name: 'Home',
     data(){
         return{
             list:[],
-            username: ''
+            username: '',
+            display: false
         }
     },
     components: {
-        Navbar
+        Navbar,
+        Dialog,
+        Provider
     },
     methods :{
         logOut(){
             this.$emit('logout');
+        },
+        showProvider(lista){
+            this.display = true;
+            localStorage.setItem('provider',lista.id)
+            console.log(localStorage.getItem('provider'))
         }
     },
     created(){
