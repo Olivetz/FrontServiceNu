@@ -120,7 +120,7 @@ export default{
 
             this.$apollo.mutate({
                     mutation: gql`
-                    mutation Mutation($updateAccountId: String!, $name: String!, $tipDocument: String!, $numDocument: Int!, $city: String!, $address: String!, $phoneNum: Int!, $mobileNum: Int!, $socialSecurity: Int!, $value: Int!, $password: String!, $tipUser: String!) {
+                    mutation Mutation($updateAccountId: String!, $name: String!, $tipDocument: String!, $numDocument: Int!, $city: String!, $address: String!, $phoneNum: Int!, $mobileNum: Float!, $socialSecurity: Int!, $value: Int!, $password: String!, $tipUser: String!) {
                         updateAccount(id: $updateAccountId, name: $name, tip_document: $tipDocument, num_document: $numDocument, city: $city, address: $address, phone_num: $phoneNum, mobile_num: $mobileNum, social_security: $socialSecurity, value: $value, password: $password, tip_user: $tipUser){
                             name
                         }                      

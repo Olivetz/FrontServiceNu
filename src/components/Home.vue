@@ -9,21 +9,21 @@
         <br>
         <br>
         <div class="row">
-            <div class="col-4" style="width: 18rem;" v-for="lista in list" :key="lista.id">
-                <div class="card-img-top" alt="..." height="300" >
-                    <img v-bind:src='"https://assets.quick.com.co/images/pictures/aseo_oficina.jpg"' class="card-img-top" height="300" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Empresa {{lista.name}}</h5>
-                      <p>Ciudad: <b> {{lista.city}}</b></p>
-                      <p class="card-text">Se ofrece servicio de {{lista.tip_user}} por el 
-                          precio de ${{lista.value}} la hora
-                      </p>
-                      <button class="btn btn-primary me-1"
-                      v-on:click="showProvider(lista)"
-                      >Solicitar</button>
+                <div class="col-4" style="width: 18rem;" v-for="lista in list" :key="lista.id">
+                    <div class="card-img-top" alt="..." height="300" >
+                        <img v-bind:src='"https://assets.quick.com.co/images/pictures/aseo_oficina.jpg"' class="card-img-top" height="300" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Empresa {{lista.name}}</h5>
+                        <p>Ciudad: <b> {{lista.city}}</b></p>
+                        <p class="card-text">Se ofrece servicio de {{lista.tip_user}} por el 
+                            precio de ${{lista.value}} la hora
+                        </p>
+                        <button class="btn btn-danger me-1"
+                        v-on:click="showProvider(lista)"
+                        >Ver mas</button>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     <Dialog header="Proveedor de servicios" v-model:visible="display" :style="{width: '30vw'}">

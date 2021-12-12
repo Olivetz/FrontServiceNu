@@ -2,7 +2,7 @@
     <div class="mb-3">
         <h2>Nuevo servicio</h2>
         <p>Ingrese sus datos para el nuevo servicio:</p>
-        <p>Nombre: <input v-model="newprovider.name" type="text" required></p>
+        <p>Nombre: <input v-model="newprovider.name" type="text"></p>
         <p>Ciudad: <input v-model="newprovider.city" type="text"></p>
         <p>Dirección: <input v-model="newprovider.address" type="text"></p>
         <p>Tipo de servicio: <input v-model="newprovider.tip_user" type="text"></p>
@@ -51,7 +51,7 @@ export default {
 
             this.$apollo.mutate({
                     mutation: gql`
-                    mutation Mutation($name: String!, $tipDocument: String!, $numDocument: Int!, $city: String!, $address: String!, $phoneNum: Int!, $mobileNum: Int!, $socialSecurity: Int!, $value: Int!, $password: String!, $tipUser: String!) {
+                    mutation Mutation($name: String!, $tipDocument: String!, $numDocument: Int!, $city: String!, $address: String!, $phoneNum: Int!, $mobileNum: Float!, $socialSecurity: Int!, $value: Int!, $password: String!, $tipUser: String!) {
                         newAccountService(name: $name, tip_document: $tipDocument, num_document: $numDocument, city: $city, address: $address, phone_num: $phoneNum, mobile_num: $mobileNum, social_security: $socialSecurity, value: $value, password: $password, tip_user: $tipUser){
                             name
                         }                      
@@ -73,6 +73,7 @@ export default {
                 }
                 }).then(response => {
                     console.log("Se creo exitosamente: " + this.newprovider.name);
+                    
                     console.log(response)
                 }).catch(e => {
                     console.log(JSON.stringify(e, null, 2));
